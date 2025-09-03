@@ -6,24 +6,31 @@ export const Text = ({ children }) => {
   );
 };
 
-export const Input = () => {
+export const Input = ({ onChange, value }) => {
   return (
     <div>
       <input
-        className="w-[416px] h-[44px] border border-solid border-[#CBD5E1] rounded-[8px] text-[#8B8E95] font-normal font-[16px] pl-[13px] mb-[12px]"
+        className={`w-[416px] h-[44px] border border-solid border-[#CBD5E1] rounded-[8px] text-[#8B8E95] font-[16px] pl-[13px] mb-[12px]`}
+        value={value}
+        onChange={onChange}
         placeholder="Placeholder"
+        type="text"
       />
     </div>
   );
 };
 
-export const Button = ({ variant, children, onClick }) => {
+export const Button = ({ variant, children, onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-[416px] h-[44px] bg-[#121316] border rounded-md mt-[150px] text-white ${
-        variant === "primary" ? "bg-red-400" : ""
-      } ${variant === "secondary" ? "bg-yellow-100" : ""}`}
+      className={`w-[416px] h-[44px] bg-[#121316] border rounded-md mt-[150px] text-white ${className} ${
+        variant === "primary" ? "w-[280px]" : ""
+      } ${
+        variant === "secondary"
+          ? "w-[128px] h-[44px] bg-[#FFFFFF] border rounded-md text-black"
+          : ""
+      }`}
     >
       {children}
     </button>

@@ -9,12 +9,18 @@ export default function Home() {
     firstName: "",
     lastName: "",
     userName: "",
+    password: "",
+    confirm: "",
   });
+  console.log(form);
   const [step, setStep] = useState("Step1");
 
   function submit() {
     setStep("Step2");
   }
+  const handleOnBack = () => {
+    setForm("Step1");
+  };
 
   if (step === "Step1") {
     return (
@@ -79,16 +85,22 @@ export default function Home() {
             <Text>Password</Text>
             <Input
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
             <Text>Confirm password</Text>
             <Input
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => setForm({ ...form, confirm: e.target.value })}
             />
           </div>
           <div>
-            <Button variant="secondary"></Button>
+            <Button
+              onClick={handleOnBack}
+              className={"bg-amber-900"}
+              variant="secondary"
+            >
+              Back
+            </Button>
             <Button variant="primary">Continue 2/3</Button>
           </div>
         </div>
