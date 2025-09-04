@@ -20,17 +20,27 @@ export const Input = ({ onChange, value }) => {
   );
 };
 
-export const Button = ({ variant, children, onClick, className }) => {
+export const Button = ({
+  variant,
+  children,
+  onClick,
+  className,
+  className1,
+}) => {
   return (
     <button
       onClick={onClick}
-      className={`w-[416px] h-[44px] bg-[#121316] border rounded-md mt-[150px] text-white ${className} ${
-        variant === "primary" ? "w-[280px]" : ""
-      } ${
-        variant === "secondary"
-          ? "w-[128px] h-[44px] bg-[#FFFFFF] border rounded-md text-black"
-          : ""
-      }`}
+      className={
+        `w-[416px] h-[44px] bg-[#121316] border rounded-md mt-[150px] text-white ${
+          variant === "primary" ? "w-[280px]" : ""
+        } ${
+          variant === "secondary"
+            ? " bg-amber-500 border rounded-md text-black"
+            : ""
+        }` +
+        className +
+        className1
+      }
     >
       {children}
     </button>

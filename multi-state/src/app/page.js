@@ -19,7 +19,16 @@ export default function Home() {
     setStep("Step2");
   }
   const handleOnBack = () => {
-    setForm("Step1");
+    setStep("Step1");
+  };
+  const handleOnClick = () => {
+    setStep("Step3");
+  };
+  const handleOnBack1 = () => {
+    setStep("Step2");
+  };
+  const handleOnClick1 = () => {
+    setStep("Step4");
   };
 
   if (step === "Step1") {
@@ -84,25 +93,91 @@ export default function Home() {
             />
             <Text>Password</Text>
             <Input
-              value={form.email}
+              value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
             <Text>Confirm password</Text>
             <Input
-              value={form.email}
+              value={form.confirm}
               onChange={(e) => setForm({ ...form, confirm: e.target.value })}
             />
           </div>
-          <div>
+          <div className="flex gap-[8px]">
             <Button
+              className1={" !w-[128px]"}
               onClick={handleOnBack}
-              className={"bg-amber-900"}
               variant="secondary"
             >
               Back
             </Button>
-            <Button variant="primary">Continue 2/3</Button>
+            <Button
+              className1={" !w-[280px]"}
+              onClick={handleOnClick}
+              variant="primary"
+            >
+              Continue 2/3
+            </Button>
           </div>
+        </div>
+      </div>
+    );
+  }
+  if (step === "Step3") {
+    return (
+      <div className="bg-[#F4F4F4] w-full h-screen pt-[182px] flex justify-center">
+        <div className="bg-[#FFFFFF] w-[480px] h-fit border-transparent rounded-lg p-[32px]">
+          <header className="pb-[28px]">
+            <img src="ima/Main 1.svg" />
+            <p className="text-[#202124] text-[26px] font-semibold py-[8px]">
+              Join Us! 😎
+            </p>
+            <p className="text-[#8E8E8E] text-[18px] font-normal">
+              Please provide all current information accurately.
+            </p>
+          </header>
+          <div>
+            <p className="text-[#334155] mb-2">
+              Date of birth{" "}
+              <span className="text-[#E14942] text-[14px]">*</span>
+            </p>
+            <input
+              type="date"
+              className=" border mb-3 w-[416px] h-[44px] rounded-md p-3 text-[#8B8E95]"
+            />
+          </div>
+          <div className="flex gap-[8px]">
+            <Button
+              className1={" !w-[128px]"}
+              onClick={handleOnBack1}
+              variant="secondary"
+            >
+              Back
+            </Button>
+            <Button
+              className1={" !w-[280px]"}
+              onClick={handleOnClick1}
+              variant="primary"
+            >
+              Continue 3/3
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (step === "Step4") {
+    return (
+      <div className="bg-[#F4F4F4] w-full h-screen pt-[182px] flex justify-center">
+        <div className="bg-[#FFFFFF] w-[480px] h-fit border-transparent rounded-lg p-[32px]">
+          <header>
+            <img src="ima/Main 1.svg" />
+            <p className="text-[#202124] text-[26px] font-semibold py-[8px]">
+              You're All Set 🔥
+            </p>
+            <p className="text-[#8E8E8E] text-[18px] font-normal">
+              We have received your submission. Thank you!
+            </p>
+          </header>
         </div>
       </div>
     );
