@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input, Text, Button } from "@/components";
 
 export default function Home() {
@@ -30,6 +30,21 @@ export default function Home() {
   const handleOnClick1 = () => {
     setStep("Step4");
   };
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const newErrors = {};
+
+    const phoneRegex = /^\d{8}$/;
+
+    if (phoneRegex.test(form.phone)) {
+      newErrors.phone = null;
+    } else {
+      newErrors.phone = "Please enter a valid phone number.";
+    }
+    setErrors(newErrors);
+  }, [form.phone]);
 
   if (step === "Step1") {
     return (
@@ -136,16 +151,19 @@ export default function Home() {
             </p>
           </header>
           <div>
-            <p className="text-[#334155] mb-2">
-              Date of birth{" "}
-              <span className="text-[#E14942] text-[14px]">*</span>
-            </p>
+            <Text>Date of birth</Text>
             <input
               type="date"
               className=" border mb-3 w-[416px] h-[44px] rounded-md p-3 text-[#8B8E95]"
             />
           </div>
-          <div className="flex gap-[8px]">
+          <Text>Profile image</Text>
+          <div className="bg-[#7F7F800D] h-[180px] relative text-[#09090B] font-[14px] flex justify-center items-center">
+            <img className="absolute top-11" src="ima/file.png" />
+            Add image
+            <input type="file" className="absolute opacity-0 inset-0" />
+          </div>
+          <div className="flex gap-[8px] mt-[-48px]">
             <Button
               className1={" !w-[128px]"}
               onClick={handleOnBack1}
